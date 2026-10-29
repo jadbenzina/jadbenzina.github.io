@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jad Benzina — e-Portfolio</title>
+<meta name="description" content="e-Portfolio de Jad Benzina, étudiant ingénieur à l’ENSEEIHT (département 3EA).">
+<style>
+:root{--bg:#f3f6f8;--surface:#ffffff;--ink:#0e1a2b;--muted:#566275;--line:#d5dde5;--accent:#0b6e63;--accent-ink:#ffffff;color-scheme:light}
+:root[data-theme="dark"]{--bg:#0a121b;--surface:#111c28;--ink:#e8eef4;--muted:#95a3b5;--line:#233243;--accent:#3fd0bd;--accent-ink:#06211d;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a121b;--surface:#111c28;--ink:#e8eef4;--muted:#95a3b5;--line:#233243;--accent:#3fd0bd;--accent-ink:#06211d;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:"Space Grotesk","Inter",system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{max-width:980px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+.brand{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:19px;color:var(--ink);text-decoration:none;margin-right:auto}
+nav{display:flex;gap:16px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--ink)}
+.tools{display:flex;gap:8px}
+.tool{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;min-width:42px;height:38px;font:600 14px "Space Grotesk",sans-serif;cursor:pointer}
+.tool:hover{border-color:var(--accent)}
+main{max-width:980px;margin:0 auto;padding:0 20px}
+section{padding:56px 0 8px}
+h2{font-size:30px;margin-bottom:22px}
+.hero{display:grid;grid-template-columns:1fr 220px;gap:40px;align-items:center;padding-top:64px}
+.hero h1{font-size:clamp(40px,7vw,68px);letter-spacing:-.02em}
+.role{font-size:20px;color:var(--muted);margin:14px 0 18px}
+.lead{max-width:56ch}
+.photo{width:220px;height:262px;object-fit:cover;border-radius:6px;border:1px solid var(--line);justify-self:end}
+.wave{display:block;width:100%;height:56px;margin-top:40px;color:var(--accent)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;padding:11px 20px;border-radius:8px;font-weight:600;text-decoration:none;border:1px solid var(--accent)}
+.btn.main{background:var(--accent);color:var(--accent-ink)}
+.btn.alt{color:var(--accent);background:transparent}
+.timeline{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 28px 20px}
+.timeline li::before{content:"";position:absolute;left:-30px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+.when{color:var(--muted);font-size:15px}
+.timeline h3{font-size:21px;margin:2px 0 2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.box h3{font-size:19px;margin-bottom:8px}
+.box p{margin:0;color:var(--muted)}
+.box ul{margin:0;padding-left:18px;color:var(--muted)}
+.contact a{display:block;font-size:19px;margin:6px 0}
+footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+@media (max-width:720px){.hero{grid-template-columns:1fr}.photo{justify-self:start;width:160px;height:191px;order:-1}nav{display:none}.hero{padding-top:36px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="brand" href="#home">Jad Benzina</a>
+    <nav aria-label="Navigation">
+      <a href="#home" data-i="nav_home">Accueil</a>
+      <a href="#education" data-i="nav_edu">Formation</a>
+      <a href="#skills" data-i="nav_skills">Compétences</a>
+      <a href="#sport" data-i="nav_sport">Sport</a>
+      <a href="#contact" data-i="nav_contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="tool" id="theme" type="button" aria-label="Mode clair / sombre">◐</button>
+      <button class="tool" id="lang" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <div>
+      <h1>Jad Benzina</h1>
+      <p class="role" data-i="role">Étudiant ingénieur en électronique, énergie et automatique — ENSEEIHT, Toulouse</p>
+      <p class="lead" data-i="lead">Issu d’une classe préparatoire MPSI/MP à Rabat, je poursuis aujourd’hui mes études à Toulouse. Sérieux, autonome et habitué à un rythme de travail soutenu, je cherche un emploi étudiant compatible avec mes cours.</p>
+      <div class="actions">
+        <a class="btn main" id="cv" href="CV_Jad_Benzina_FR.pdf" data-i="cv">Télécharger mon CV</a>
+        <a class="btn alt" href="#contact" data-i="contact_btn">Me contacter</a>
+      </div>
+    </div>
+    <img class="photo" alt="Portrait de Jad Benzina" src="data:image/jpeg;base64,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">
+  </section>
+  <svg class="wave" viewBox="0 0 960 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28 C 40 -6, 80 -6, 120 28 S 200 62, 240 28 S 320 -6, 360 28 S 440 62, 480 28 S 560 -6, 600 28 S 680 62, 720 28 S 800 -6, 840 28 S 920 62, 960 28" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+
+  <section id="education">
+    <h2 data-i="edu_t">Formation</h2>
+    <ol class="timeline">
+      <li><span class="when" data-i="e1_when">2026 – aujourd’hui</span><h3>ENSEEIHT — <span data-i="e1_dept">Département 3EA</span></h3><div class="when" data-i="e1_sub">Électronique, Énergie, Automatique — Toulouse</div></li>
+      <li><span class="when">2024 – 2026</span><h3 data-i="e2_t">CPGE MPSI puis MP</h3><div class="when" data-i="e2_sub">Lycée Al Khansaa / Abulcasis — Rabat, Maroc</div></li>
+    </ol>
+  </section>
+
+  <section id="skills">
+    <h2 data-i="sk_t">Compétences</h2>
+    <div class="grid">
+      <div class="box"><h3 data-i="sk1_t">Sciences</h3><p data-i="sk1">Connaissances de niveau Bac+2 en mathématiques et physique.</p></div>
+      <div class="box"><h3 data-i="sk2_t">Informatique</h3><p data-i="sk2">Python (bon niveau), bases en C.</p></div>
+      <div class="box"><h3 data-i="sk3_t">Langues</h3>
+        <ul><li data-i="l1">Arabe : langue maternelle</li><li data-i="l2">Français : DALF C1</li><li data-i="l3">Anglais : intermédiaire</li><li data-i="l4">Espagnol : débutant, en cours d’apprentissage</li></ul></div>
+      <div class="box"><h3 data-i="sk4_t">Qualités</h3><p data-i="sk4">Rigueur, capacité de travail, autonomie, esprit d’équipe, adaptation.</p></div>
+    </div>
+  </section>
+
+  <section id="sport">
+    <h2 data-i="sp_t">Sport</h2>
+    <div class="box"><h3 data-i="sp1_t">Football</h3><p data-i="sp1">Plus de 7 ans en club au Fath Union Sport (Maroc), avec participation à des compétitions. Une pratique régulière qui m’a appris la discipline et le travail en équipe.</p></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 data-i="ct_t">Contact</h2>
+    <p data-i="ct_p">Disponible pour un emploi étudiant à Toulouse, selon les contraintes de mon emploi du temps.</p>
+    <a href="mailto:jad.benzina765@gmail.com">jad.benzina765@gmail.com</a>
+    <a href="tel:+33780842732">+33 7 80 84 27 32</a>
+  </section>
+</main>
+<footer>© Jad Benzina — ENSEEIHT 3EA</footer>
+
+<script>
+var T={
+fr:{nav_home:"Accueil",nav_edu:"Formation",nav_skills:"Compétences",nav_sport:"Sport",nav_contact:"Contact",
+role:"Étudiant ingénieur en électronique, énergie et automatique — ENSEEIHT, Toulouse",
+lead:"Issu d’une classe préparatoire MPSI/MP à Rabat, je poursuis aujourd’hui mes études à Toulouse. Sérieux, autonome et habitué à un rythme de travail soutenu, je cherche un emploi étudiant compatible avec mes cours.",
+cv:"Télécharger mon CV",contact_btn:"Me contacter",edu_t:"Formation",e1_when:"2026 – aujourd’hui",e1_dept:"Département 3EA",e1_sub:"Électronique, Énergie, Automatique — Toulouse",
+e2_t:"CPGE MPSI puis MP",e2_sub:"Lycée Al Khansaa / Abulcasis — Rabat, Maroc",
+sk_t:"Compétences",sk1_t:"Sciences",sk1:"Connaissances de niveau Bac+2 en mathématiques et physique.",sk2_t:"Informatique",sk2:"Python (bon niveau), bases en C.",
+sk3_t:"Langues",l1:"Arabe : langue maternelle",l2:"Français : DALF C1",l3:"Anglais : intermédiaire",l4:"Espagnol : débutant, en cours d’apprentissage",
+sk4_t:"Qualités",sk4:"Rigueur, capacité de travail, autonomie, esprit d’équipe, adaptation.",
+sp_t:"Sport",sp1_t:"Football",sp1:"Plus de 7 ans en club au Fath Union Sport (Maroc), avec participation à des compétitions. Une pratique régulière qui m’a appris la discipline et le travail en équipe.",
+ct_t:"Contact",ct_p:"Disponible pour un emploi étudiant à Toulouse, selon les contraintes de mon emploi du temps.",
+title:"Jad Benzina — e-Portfolio",cvfile:"CV_Jad_Benzina_FR.pdf",btn:"EN"},
+en:{nav_home:"Home",nav_edu:"Education",nav_skills:"Skills",nav_sport:"Sport",nav_contact:"Contact",
+role:"Engineering student in electronics, energy and automation — ENSEEIHT, Toulouse",
+lead:"Coming from a MPSI/MP preparatory class in Rabat, I am now continuing my studies in Toulouse. Serious, autonomous and used to a demanding workload, I am looking for a student job compatible with my classes.",
+cv:"Download my résumé",contact_btn:"Contact me",edu_t:"Education",e1_when:"2026 – present",e1_dept:"3EA Department",e1_sub:"Electronics, Energy, Automation — Toulouse",
+e2_t:"CPGE MPSI then MP (preparatory classes)",e2_sub:"Lycée Al Khansaa / Abulcasis — Rabat, Morocco",
+sk_t:"Skills",sk1_t:"Sciences",sk1:"Bac+2 level knowledge in mathematics and physics.",sk2_t:"Computing",sk2:"Python (good level), basics of C.",
+sk3_t:"Languages",l1:"Arabic: native",l2:"French: DALF C1",l3:"English: intermediate",l4:"Spanish: beginner, currently learning",
+sk4_t:"Strengths",sk4:"Rigour, work ethic, autonomy, team spirit, adaptability.",
+sp_t:"Sport",sp1_t:"Football",sp1:"Over 7 years in a club at Fath Union Sport (Morocco), including competitions. Regular practice that taught me discipline and teamwork.",
+ct_t:"Contact",ct_p:"Available for a student job in Toulouse, depending on my class schedule.",
+title:"Jad Benzina — e-Portfolio",cvfile:"CV_Jad_Benzina_EN.pdf",btn:"FR"}
+};
+var root=document.documentElement;
+function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function setLang(l){
+  var d=T[l];root.lang=l;
+  document.querySelectorAll("[data-i]").forEach(function(el){var k=el.getAttribute("data-i");if(d[k]!==undefined)el.textContent=d[k]});
+  document.getElementById("cv").href=d.cvfile;
+  document.getElementById("lang").textContent=d.btn;
+  document.title=d.title;store("lang",l);
+}
+function setTheme(t){root.setAttribute("data-theme",t);store("theme",t)}
+document.getElementById("lang").onclick=function(){setLang(root.lang==="fr"?"en":"fr")};
+document.getElementById("theme").onclick=function(){
+  var dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+  setTheme(dark?"light":"dark");
+};
+var sl=load("lang"),st=load("theme");
+if(st)setTheme(st);
+setLang(sl==="en"||sl==="fr"?sl:((navigator.language||"fr").slice(0,2)==="en"?"en":"fr"));
+</script>
+</body>
+</html>
