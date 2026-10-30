@@ -48,6 +48,13 @@ h2{font-size:30px;margin-bottom:22px}
 .box p{margin:0;color:var(--muted)}
 .box ul{margin:0;padding-left:18px;color:var(--muted)}
 .contact a{display:block;font-size:19px;margin:6px 0}
+.pitch{max-width:320px}
+.video{width:100%;aspect-ratio:9/16;max-height:78vh;background:#000;border-radius:12px;border:1px solid var(--line);object-fit:contain}
+@media (max-width:720px){.video{max-width:340px}}
+.soon{display:flex;align-items:center;gap:14px}.soon p{font-size:19px}
+.dots{display:inline-flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 1.4s infinite ease-in-out}.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.dots i{animation:none}}
 footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
 @media (max-width:720px){.hero{grid-template-columns:1fr}.photo{justify-self:start;width:160px;height:191px;order:-1}nav{display:none}.hero{padding-top:36px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -59,8 +66,10 @@ footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px 
     <a class="brand" href="#home">Jad Benzina</a>
     <nav aria-label="Navigation">
       <a href="#home" data-i="nav_home">Accueil</a>
+      <a href="#pitch" data-i="nav_pitch">Pitch</a>
       <a href="#education" data-i="nav_edu">Formation</a>
       <a href="#skills" data-i="nav_skills">Compétences</a>
+      <a href="#projects" data-i="nav_proj">Projets</a>
       <a href="#sport" data-i="nav_sport">Sport</a>
       <a href="#contact" data-i="nav_contact">Contact</a>
     </nav>
@@ -86,11 +95,19 @@ footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px 
   </section>
   <svg class="wave" viewBox="0 0 960 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28 C 40 -6, 80 -6, 120 28 S 200 62, 240 28 S 320 -6, 360 28 S 440 62, 480 28 S 560 -6, 600 28 S 680 62, 720 28 S 800 -6, 840 28 S 920 62, 960 28" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 
+  <section id="pitch">
+    <h2 data-i="pt_t">Pitch vidéo</h2>
+    <div class="pitch">
+      <video class="video" controls playsinline preload="metadata" poster="pitch-poster.jpg"><source src="pitch.mp4" type="video/mp4"></video>
+    </div>
+  </section>
+
   <section id="education">
     <h2 data-i="edu_t">Formation</h2>
     <ol class="timeline">
       <li><span class="when" data-i="e1_when">2026 – aujourd’hui</span><h3>ENSEEIHT — <span data-i="e1_dept">Département 3EA</span></h3><div class="when" data-i="e1_sub">Électronique, Énergie, Automatique — Toulouse</div></li>
       <li><span class="when">2024 – 2026</span><h3 data-i="e2_t">CPGE MPSI puis MP</h3><div class="when" data-i="e2_sub">Lycée Al Khansaa / Abulcasis — Rabat, Maroc</div></li>
+      <li><span class="when">2023 – 2024</span><h3 data-i="e3_t">Baccalauréat Sciences Mathématiques</h3><div class="when" data-i="e3_sub">Lycée Ben M’Barek — Rabat, Maroc</div></li>
     </ol>
   </section>
 
@@ -103,6 +120,11 @@ footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px 
         <ul><li data-i="l1">Arabe : langue maternelle</li><li data-i="l2">Français : DALF C1</li><li data-i="l3">Anglais : intermédiaire</li><li data-i="l4">Espagnol : débutant, en cours d’apprentissage</li></ul></div>
       <div class="box"><h3 data-i="sk4_t">Qualités</h3><p data-i="sk4">Rigueur, capacité de travail, autonomie, esprit d’équipe, adaptation.</p></div>
     </div>
+  </section>
+
+  <section id="projects">
+    <h2 data-i="pr_t">Projets</h2>
+    <div class="box soon"><p data-i="pr_p">À venir</p><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
   </section>
 
   <section id="sport">
@@ -122,22 +144,22 @@ footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px 
 
 <script>
 var T={
-fr:{nav_home:"Accueil",nav_edu:"Formation",nav_skills:"Compétences",nav_sport:"Sport",nav_contact:"Contact",
+fr:{nav_pitch:"Pitch",nav_proj:"Projets",pr_t:"Projets",pr_p:"À venir",pt_t:"Pitch vidéo",nav_home:"Accueil",nav_edu:"Formation",nav_skills:"Compétences",nav_sport:"Sport",nav_contact:"Contact",
 role:"Étudiant ingénieur en électronique, énergie et automatique — ENSEEIHT, Toulouse",
 lead:"Issu d’une classe préparatoire MPSI/MP à Rabat, je poursuis aujourd’hui mes études à Toulouse. Sérieux, autonome et habitué à un rythme de travail soutenu, je cherche un emploi étudiant compatible avec mes cours.",
 cv:"Télécharger mon CV",contact_btn:"Me contacter",edu_t:"Formation",e1_when:"2026 – aujourd’hui",e1_dept:"Département 3EA",e1_sub:"Électronique, Énergie, Automatique — Toulouse",
-e2_t:"CPGE MPSI puis MP",e2_sub:"Lycée Al Khansaa / Abulcasis — Rabat, Maroc",
+e3_t:"Baccalauréat Sciences Mathématiques",e3_sub:"Lycée Ben M’Barek — Rabat, Maroc",e2_t:"CPGE MPSI puis MP",e2_sub:"Lycée Al Khansaa / Abulcasis — Rabat, Maroc",
 sk_t:"Compétences",sk1_t:"Sciences",sk1:"Connaissances de niveau Bac+2 en mathématiques et physique.",sk2_t:"Informatique",sk2:"Python (bon niveau), bases en C.",
 sk3_t:"Langues",l1:"Arabe : langue maternelle",l2:"Français : DALF C1",l3:"Anglais : intermédiaire",l4:"Espagnol : débutant, en cours d’apprentissage",
 sk4_t:"Qualités",sk4:"Rigueur, capacité de travail, autonomie, esprit d’équipe, adaptation.",
 sp_t:"Sport",sp1_t:"Football",sp1:"Plus de 7 ans en club au Fath Union Sport (Maroc), avec participation à des compétitions. Une pratique régulière qui m’a appris la discipline et le travail en équipe.",
 ct_t:"Contact",ct_p:"Disponible pour un emploi étudiant à Toulouse, selon les contraintes de mon emploi du temps.",
 title:"Jad Benzina — e-Portfolio",cvfile:"CV_Jad_Benzina_FR.pdf",btn:"EN"},
-en:{nav_home:"Home",nav_edu:"Education",nav_skills:"Skills",nav_sport:"Sport",nav_contact:"Contact",
+en:{nav_pitch:"Pitch",nav_proj:"Projects",pr_t:"Projects",pr_p:"Coming soon",pt_t:"Video pitch",nav_home:"Home",nav_edu:"Education",nav_skills:"Skills",nav_sport:"Sport",nav_contact:"Contact",
 role:"Engineering student in electronics, energy and automation — ENSEEIHT, Toulouse",
 lead:"Coming from a MPSI/MP preparatory class in Rabat, I am now continuing my studies in Toulouse. Serious, autonomous and used to a demanding workload, I am looking for a student job compatible with my classes.",
 cv:"Download my résumé",contact_btn:"Contact me",edu_t:"Education",e1_when:"2026 – present",e1_dept:"3EA Department",e1_sub:"Electronics, Energy, Automation — Toulouse",
-e2_t:"CPGE MPSI then MP (preparatory classes)",e2_sub:"Lycée Al Khansaa / Abulcasis — Rabat, Morocco",
+e3_t:"Baccalauréat in Mathematical Sciences",e3_sub:"Lycée Ben M’Barek — Rabat, Morocco",e2_t:"CPGE MPSI then MP (preparatory classes)",e2_sub:"Lycée Al Khansaa / Abulcasis — Rabat, Morocco",
 sk_t:"Skills",sk1_t:"Sciences",sk1:"Bac+2 level knowledge in mathematics and physics.",sk2_t:"Computing",sk2:"Python (good level), basics of C.",
 sk3_t:"Languages",l1:"Arabic: native",l2:"French: DALF C1",l3:"English: intermediate",l4:"Spanish: beginner, currently learning",
 sk4_t:"Strengths",sk4:"Rigour, work ethic, autonomy, team spirit, adaptability.",
