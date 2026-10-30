@@ -48,7 +48,14 @@ h2{font-size:30px;margin-bottom:22px}
 .box p{margin:0;color:var(--muted)}
 .box ul{margin:0;padding-left:18px;color:var(--muted)}
 .contact a{display:block;font-size:19px;margin:6px 0}
-.pitch{max-width:320px}
+.pitch{max-width:320px;position:relative}
+.video{display:block}
+.play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#000;color:#fff;border:1px solid var(--line);border-radius:12px;cursor:pointer;font:600 16px "Space Grotesk",sans-serif}
+.play[hidden]{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tri{width:68px;height:68px;border-radius:50%;border:2px solid #fff;position:relative}
+.tri::after{content:"";position:absolute;left:27px;top:20px;border-left:20px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.play:hover .tri{border-color:var(--accent)}.play:hover .tri::after{border-left-color:var(--accent)}
 .video{width:100%;aspect-ratio:9/16;max-height:78vh;background:#000;border-radius:12px;border:1px solid var(--line);object-fit:contain}
 @media (max-width:720px){.video{max-width:340px}}
 .soon{display:flex;align-items:center;gap:14px}.soon p{font-size:19px}
@@ -96,9 +103,10 @@ footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px 
   <svg class="wave" viewBox="0 0 960 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28 C 40 -6, 80 -6, 120 28 S 200 62, 240 28 S 320 -6, 360 28 S 440 62, 480 28 S 560 -6, 600 28 S 680 62, 720 28 S 800 -6, 840 28 S 920 62, 960 28" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
 
   <section id="pitch">
-    <h2 data-i="pt_t">Pitch vidéo</h2>
+    <h2 data-i="pt_t">Elevator pitch</h2>
     <div class="pitch">
-      <video class="video" controls playsinline preload="metadata" poster="pitch-poster.jpg"><source src="pitch.mp4" type="video/mp4"></video>
+      <video class="video" id="pv" playsinline preload="none"><source src="pitch.mp4" type="video/mp4"></video>
+      <button class="play" id="play" type="button"><span class="tri" aria-hidden="true"></span><span class="sr" data-i="pt_btn">Jouer la vidéo</span></button>
     </div>
   </section>
 
@@ -144,7 +152,7 @@ footer{max-width:980px;margin:64px auto 0;padding:22px 20px 40px;border-top:1px 
 
 <script>
 var T={
-fr:{nav_pitch:"Pitch",nav_proj:"Projets",pr_t:"Projets",pr_p:"À venir",pt_t:"Pitch vidéo",nav_home:"Accueil",nav_edu:"Formation",nav_skills:"Compétences",nav_sport:"Sport",nav_contact:"Contact",
+fr:{nav_pitch:"Pitch",nav_proj:"Projets",pr_t:"Projets",pr_p:"À venir",pt_t:"Elevator pitch",pt_btn:"Jouer la vidéo",nav_home:"Accueil",nav_edu:"Formation",nav_skills:"Compétences",nav_sport:"Sport",nav_contact:"Contact",
 role:"Étudiant ingénieur en électronique, énergie et automatique — ENSEEIHT, Toulouse",
 lead:"Issu d’une classe préparatoire MPSI/MP à Rabat, je poursuis aujourd’hui mes études à Toulouse. Sérieux, autonome et habitué à un rythme de travail soutenu, je cherche un emploi étudiant compatible avec mes cours.",
 cv:"Télécharger mon CV",contact_btn:"Me contacter",edu_t:"Formation",e1_when:"2026 – aujourd’hui",e1_dept:"Département 3EA",e1_sub:"Électronique, Énergie, Automatique — Toulouse",
@@ -155,7 +163,7 @@ sk4_t:"Qualités",sk4:"Rigueur, capacité de travail, autonomie, esprit d’équ
 sp_t:"Sport",sp1_t:"Football",sp1:"Plus de 7 ans en club au Fath Union Sport (Maroc), avec participation à des compétitions. Une pratique régulière qui m’a appris la discipline et le travail en équipe.",
 ct_t:"Contact",ct_p:"Disponible pour un emploi étudiant à Toulouse, selon les contraintes de mon emploi du temps.",
 title:"Jad Benzina — e-Portfolio",cvfile:"CV_Jad_Benzina_FR.pdf",btn:"EN"},
-en:{nav_pitch:"Pitch",nav_proj:"Projects",pr_t:"Projects",pr_p:"Coming soon",pt_t:"Video pitch",nav_home:"Home",nav_edu:"Education",nav_skills:"Skills",nav_sport:"Sport",nav_contact:"Contact",
+en:{nav_pitch:"Pitch",nav_proj:"Projects",pr_t:"Projects",pr_p:"Coming soon",pt_t:"Elevator pitch",pt_btn:"Play video",nav_home:"Home",nav_edu:"Education",nav_skills:"Skills",nav_sport:"Sport",nav_contact:"Contact",
 role:"Engineering student in electronics, energy and automation — ENSEEIHT, Toulouse",
 lead:"Coming from a MPSI/MP preparatory class in Rabat, I am now continuing my studies in Toulouse. Serious, autonomous and used to a demanding workload, I am looking for a student job compatible with my classes.",
 cv:"Download my résumé",contact_btn:"Contact me",edu_t:"Education",e1_when:"2026 – present",e1_dept:"3EA Department",e1_sub:"Electronics, Energy, Automation — Toulouse",
@@ -183,6 +191,7 @@ document.getElementById("theme").onclick=function(){
   var dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
   setTheme(dark?"light":"dark");
 };
+document.getElementById("play").onclick=function(){var v=document.getElementById("pv");this.hidden=true;v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){})};
 var sl=load("lang"),st=load("theme");
 if(st)setTheme(st);
 setLang(sl==="en"||sl==="fr"?sl:((navigator.language||"fr").slice(0,2)==="en"?"en":"fr"));
